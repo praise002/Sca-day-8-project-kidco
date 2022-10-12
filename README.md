@@ -30,3 +30,6 @@
 #### Notes
 - Created a *fixtures*
 - Created a default ordering for *course* and *modules*
+- Used model inheritance to manage different types of content for the course modules
+- Implemented a custom model field
+- Created an authenetication system for the E-learning platform
