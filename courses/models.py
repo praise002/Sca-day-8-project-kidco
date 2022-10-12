@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from . fields import OrderField
 
 
 class Subject(models.Model):
@@ -31,12 +32,18 @@ class Course(models.Model):
     
     
 class Module(models.Model):
-    courses = models.ForeignKey(Course, related_name='modules', on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, related_name='modules', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     
+    order = OrderField(blank=True, for_fields=['course']) #ordering of a module is based on the course
+    
     def __str__(self):
-        return self.title
+        return f'{self.order}. {self.title}'
+    
+    #Default ordering for both models
+    class Meta:
+        ordering = ['order']
     
     
 class Content(models.Model):
@@ -53,6 +60,12 @@ class Content(models.Model):
     item = GenericForeignKey('content_type', 'object_id')  #it combines the two previous fields
     #The item allows you to retrieve or set the related object directly and its functionality is built
     #on top of the other two fields
+    
+    order = OrderField(blank=True, for_fields=['module'])  #module contents need to follow an order
+    
+    #Default ordering for both models
+    class Meta:
+        ordering = ['order']
     
     
 class ItemBase(models.Model):
