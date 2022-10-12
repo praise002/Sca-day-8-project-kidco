@@ -14,6 +14,13 @@
 - python -m django --version
 - pipenv install python-dotenv
 - pipenv install Pillow==9.2.0
+- pipenv install mysqlclient
+- mysql --version 
+- mysql -u root -p
+- python manage.py createsuperuser
+- python manage.py dumpdata courses --indent=2
+- mkdir courses/fixtures
+- python manage.py dumpdata courses --indent=2 --output=courses/fixtures/subjects.json
 
 ### Steps
 - Activate virtual environment by running pipenv --venv --> command pallette --> select interpreter
