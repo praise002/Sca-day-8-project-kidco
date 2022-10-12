@@ -3,8 +3,8 @@
 ## Commands
 - pip install pipenv
 - pipenv install django
-- django-admin startproject bookmarks .
-- python manage.py startapp account
+- django-admin startproject kidco .
+- python manage.py startapp courses
 - python manage.py migrate
 - python manage.py runserver
 - code .
