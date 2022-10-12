@@ -21,7 +21,12 @@
 - python manage.py dumpdata courses --indent=2
 - mkdir courses/fixtures
 - python manage.py dumpdata courses --indent=2 --output=courses/fixtures/subjects.json
+- python manage.py shell
 
 ### Steps
 - Activate virtual environment by running pipenv --venv --> command pallette --> select interpreter
 - Make migrations
+
+#### Notes
+- Created a *fixtures*
+- Created a default ordering for *course* and *modules*
